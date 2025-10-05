@@ -1,0 +1,7 @@
+<div class="ekart--search--product">
+    <input class="ekart-search-product-input" #searchInput>  
+    <!--ye upar wala #searchInput is a template reference variable jo ek reference deta hai input element ko 
+    ab wo input value hume neeche wale search button ko deni hai so that wo button click hone pe desired results dikhe-->
+    <button class="btn btn-search" (click)="updateSearchText()">Search</button>
+</div>
+<div class="ekart-search-result-for" *ngIf="searchText!=''"><p><strong>Search result for:</strong> {{ searchText }}</p></div>

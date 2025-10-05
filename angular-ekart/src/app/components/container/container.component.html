@@ -1,0 +1,44 @@
+<!-- we can also write bind-disabled or bind-value or bind-src instead of [disabled] ,[value] ,[src]  -->
+<div class="ekart-product--container">
+    <!-- <img [src]="product.image" style="width: 300px; height: 400px;">
+    <p>Name: {{ product.name }}</p>
+    <p>Price: {{ '$' + product.price }}</p>
+    <p>Colour: {{ product.colour }}</p>
+    <p>Discounted Price: {{ '$' + getDiscountedPrice().toFixed(2) }}</p>
+    <p>{{ product.stock > 0 ? 'Only ' + product.stock + ' available' : 'Not in Stock' }}</p>
+    <button [disabled]="!(product.stock>0)">Buy Now</button>
+    <br> <br>
+  
+    <button (click)="decrement()" style="width: 20px; height: 30px; align-items: center; font-size: 20px;"> - </button>
+    <span style="padding: 20px;">{{ addToCart }}</span>
+    <button (click)="increment()" style="width: 20px; height: 30px; align-items: center;  font-size: 20px;"> + </button>
+    <br>
+      <input (input)="onNameChange($event)">
+      <button (click)="alerting()">Enter</button>
+    <p>name: {{ name }}</p> -->
+    <app-search (searchTextChanged)="setSearchText($event)"></app-search>
+<app-product-list [searchText]="searchText" #productListComponent></app-product-list>
+<product-detail *ngIf="productListComponent.selectedProduct" [productListComp]="productListComponent"></product-detail>
+
+<div class="ekart-featured-products">
+<div class="ekart-featured-product-heading">
+<h1>Latest arrival in popular brands</h1>
+</div>
+<app-featured-brands>
+    <h3 class="title">New Arrivals in Nike</h3>
+      <button class="call-to-action">Show new arrivals in Nike</button>
+</app-featured-brands>
+<app-featured-brands>
+    <h3 class="title">New Arrivals in Adidas</h3>
+      <button class="call-to-action">Show new arrivals in Adidas</button>
+</app-featured-brands>
+<app-featured-brands>
+    <h3 class="title">New Arrivals in Reebok</h3>
+      <button class="call-to-action">Show new arrivals in Reebok</button>
+</app-featured-brands>
+<app-featured-brands>
+    <h3 class="title">New Arrivals in Fester</h3>
+      <button class="call-to-action">Show new arrivals in Fester</button>
+</app-featured-brands>
+</div>
+</div>

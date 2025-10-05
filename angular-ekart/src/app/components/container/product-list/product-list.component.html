@@ -1,0 +1,38 @@
+<app-filter 
+[all]="totalProductCount" 
+[inStock]="totalProductsInStock"
+[outOfStock]="totalProductsOutOfStock"
+(selectedFilterRadioButtonChanged)="onFilterChanged($event)"> 
+ <!-- ab jabhi bhi ye selectedFilterRadioButtonChanged event hoga onFilterChanged function call hoga
+ye function me event ka data milega jo child se emit hoke aayega 
+wo data ke hisaab se wo products display karega  -->
+<!-- wo $event mein value aayegi kaunsa radio button select hua hai uski 'all' 'true' 'false'-->
+</app-filter>
+
+<!-- ab jo radio button dala hai uss hisaab se div mein bhi changes honge na 
+ like all pe sab products
+ true pe instock
+ false pe out of stock-->
+<div class="ekart-products--container">
+    <!-- <div *ngFor="let prod of products"  (click)="selectedProduct=prod"> -->
+        <!-- ek hee element pe multiple structural directives nahi laga sakte so ek div banake usme ngFor dala
+         aur apne app-product pe ngIf to sort based on the radio button-->
+
+<!--removed  temporarily -->
+          <!-- *ngIf="selectedRadioButton=== 'all'
+|| prod.is_in_inventory.toString() === selectedRadioButton" -->
+
+<ng-container *ngFor="let prod of products">
+<app-product 
+[product]="prod" 
+*ngIf="searchText === '' || prod.name.toLowerCase().includes(searchText.toLowerCase())"
+(click)="selectedProduct=prod"></app-product> 
+<!-- is_in_inventory is boolean so usko string me convert karna padega
+       ab ye selectedRadioButton variable me wo value aayegi jo radio button select hua hai
+         toh wo value all hogi toh sab products dikhayega
+         true hogi toh sirf wo products dikhayega jinka is_in_inventory true hai
+         false hogi toh sirf wo products dikhayega jinka is_in_inventory false hai-->
+         </ng-container>
+</div>
+
+<!-- </div> -->
